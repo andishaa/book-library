@@ -10,8 +10,52 @@
 </head>
 
 <body>
+    <header>
+        Book Library
+    </header>
+    <main>
+        <div id="addBookForm">
+            <form>
+                <fieldset>
+                    <legend>Add new Book to the library</legend>
+                    <p>
+                        <label for="bookTitle">Book Title:</label>
+                        <input type="text" id="bookTitle" name="bookTitle" placeholder="Enter Book's Title">
+                    </p>
+                    <p>
+                        <label for="bookAuthor">Author:</label>
+                        <input type="text" id="bookAuthor" name="bookAuthor" placeholder="Enter Book's Author">
+                    </p>
+                    <p>
+                        <label for="bookPages">Pages:</label>
+                        <input type="number" id="bookPages" name="bookPages" placeholder="Number of Book's Pages">
+                    </p>
+                    <p>
+                        <label for="readStatus">Have you read it:</label>
+                        <input type="checkbox" name="readStatus" id="readStatus">
+                    </p>
+                    <p></p>
+                    <input type="button" value="Add book">
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+        <div id="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Read Status</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </main>
+    <footer>
 
-
+    </footer>
     <script src="/script.js"></script>
 </body>
 
