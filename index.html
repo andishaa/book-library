@@ -14,8 +14,8 @@
         Book Library
     </header>
     <main>
-        <div id="addBookForm">
-            <form>
+        <div>
+            <form id='addBookForm'>
                 <fieldset>
                     <legend>Add new Book to the library</legend>
                     <p>
@@ -34,14 +34,14 @@
                         <label for="readStatus">Have you read it:</label>
                         <input type="checkbox" name="readStatus" id="readStatus">
                     </p>
-                    <p></p>
-                    <input type="button" value="Add book">
+                    <p>
+                    <input type="button" value="Add book" id='addBookBtn'>
                     </p>
                 </fieldset>
             </form>
         </div>
-        <div id="table">
-            <table>
+        <div id="container">
+            <table id="table">
                 <thead>
                     <tr>
                         <th>Title</th>
