@@ -2,13 +2,18 @@ const tableBody = document.createElement('tbody');
 const addBookBtn = document.getElementById('addBookBtn');
 
 class Library {
-    constructor(){
+    constructor() {
         this.books = [];
     }
 
     addBook(title, author, pages, readStatus) {
         let newBook = new Book(title, author, pages, readStatus);
         this.books.push(newBook);
+    }
+
+    removeBook(title) {
+        let newArr = this.books.filter(book => book.title !== title);
+        this.books = [...newArr];
     }
 }
 
@@ -57,7 +62,7 @@ function createTable() {
 
         let removeBtn = document.createElement('button');
         removeBtn.classList.add('removeButton');
-        removeBtn.textContent = 'Delete';
+        removeBtn.textContent = 'Remove Book';
 
         title.textContent = book.title;
         author.textContent = book.author;
@@ -81,4 +86,17 @@ function createTable() {
 
     table.appendChild(tableBody);
 
-}
+    if (tableBody.textContent !== '') {
+        const removeBtn = document.querySelectorAll('.removeButton');
+        removeBtn.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (confirm('Are you sure you want to REMOVE this book') === false) {
+                    return;
+                }
+                let getBookTitle = e.target.parentElement.firstChild.textContent;
+                myLibrary.removeBook(getBookTitle);
+                createTable();
+            })
+        });
+    }
+};
