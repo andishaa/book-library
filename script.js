@@ -1,14 +1,18 @@
 const tableBody = document.createElement('tbody');
 const addBookBtn = document.getElementById('addBookBtn');
 
-let myLibrary = [
-    {
-        title: "The Hobbit",
-        author: "J.R.R Tolkien",
-        pages: 295,
-        readStatus: false
-    },
-];
+class Library {
+    constructor(){
+        this.books = [];
+    }
+
+    addBook(title, author, pages, readStatus) {
+        let newBook = new Book(title, author, pages, readStatus);
+        this.books.push(newBook);
+    }
+}
+
+const myLibrary = new Library;
 
 class Book {
     constructor(title, author, pages, readStatus) {
@@ -29,23 +33,18 @@ addBookBtn.addEventListener('click', () => {
         return;
     }
 
-    addBookToLibrary(title, author, pages, readStatus);
+    myLibrary.addBook(title, author, pages, readStatus);
 
     document.getElementById('addBookForm').reset();
 
     createTable();
 });
 
-function addBookToLibrary(title, author, pages, readStatus) {
-    let newBook = new Book(title, author, pages, readStatus);
-    myLibrary.push(newBook);
-}
-
 function createTable() {
     tableBody.textContent = '';
     const table = document.querySelector('table');
 
-    myLibrary.forEach(book => {
+    myLibrary.books.forEach(book => {
         let row = document.createElement('tr');
         let title = document.createElement('td');
         let author = document.createElement('td');
