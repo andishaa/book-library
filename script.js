@@ -6,8 +6,7 @@ class Library {
         this.books = [];
     }
 
-    addBook(title, author, pages, readStatus) {
-        let newBook = new Book(title, author, pages, readStatus);
+    addBook(newBook) {
         this.books.push(newBook);
     }
 
@@ -39,7 +38,8 @@ addBookBtn.addEventListener('click', () => {
         return;
     }
 
-    myLibrary.addBook(title, author, pages, readStatus);
+    let newBook = new Book(title, author, pages, readStatus);
+    myLibrary.addBook(newBook);
 
     document.getElementById('addBookForm').reset();
 
