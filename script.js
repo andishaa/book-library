@@ -10,9 +10,8 @@ class Library {
         this.books.push(newBook);
     }
 
-    removeBook(btnId) {
-        let newArr = this.books.filter(book => !btnId.includes(book.id));
-        this.books = [...newArr];
+    removeBook(filteredArr) {
+        this.books = [...filteredArr];
     }
 }
 
@@ -96,9 +95,11 @@ function createTable() {
                 if (confirm('Are you sure you want to REMOVE this book') === false) {
                     return;
                 }
-                
-                let btnId = e.target.id;
-                myLibrary.removeBook(btnId);
+
+                let removeBtnId = e.target.id;
+                let filteredArr = myLibrary.books.filter(book => !removeBtnId.includes(book.id));
+
+                myLibrary.removeBook(filteredArr);
                 createTable();
             })
         });
