@@ -11,8 +11,8 @@ class Library {
         this.books.push(newBook);
     }
 
-    removeBook(title) {
-        let newArr = this.books.filter(book => book.title !== title);
+    removeBook(btnId) {
+        let newArr = this.books.filter(book => !btnId.includes(book.id));
         this.books = [...newArr];
     }
 }
@@ -21,6 +21,7 @@ const myLibrary = new Library;
 
 class Book {
     constructor(title, author, pages, readStatus) {
+        this.id = crypto.randomUUID();
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -58,10 +59,12 @@ function createTable() {
 
         let changeStatusBtn = document.createElement('button');
         changeStatusBtn.classList.add('changeStatusBtn');
+        changeStatusBtn.id = `ch_${book.id}`;
         changeStatusBtn.textContent = 'change read status';
 
         let removeBtn = document.createElement('button');
         removeBtn.classList.add('removeButton');
+        removeBtn.id = `del_${book.id}`;
         removeBtn.textContent = 'Remove Book';
 
         title.textContent = book.title;
@@ -93,8 +96,9 @@ function createTable() {
                 if (confirm('Are you sure you want to REMOVE this book') === false) {
                     return;
                 }
-                let getBookTitle = e.target.parentElement.firstChild.textContent;
-                myLibrary.removeBook(getBookTitle);
+                
+                let btnId = e.target.id;
+                myLibrary.removeBook(btnId);
                 createTable();
             })
         });
