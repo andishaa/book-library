@@ -97,25 +97,28 @@ function createTable() {
     table.appendChild(tableBody);
 
     if (tableBody.textContent !== '') {
-        const removeBtn = document.querySelectorAll('.removeButton');
-
-        removeBtn.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                if (confirm('Are you sure you want to REMOVE this book') === false) {
-                    return;
-                }
-
-                let removeBtnId = e.target.id;
-                let filteredArr = myLibrary.books.filter(book => !removeBtnId.includes(book.id));
-
-                myLibrary.removeBook(filteredArr);
-                createTable();
-            })
-        });
-
+        setUpRemoveBtn();
         setUpChangeReadStatusBtn();
     }
 };
+
+function setUpRemoveBtn() {
+    const removeBtn = document.querySelectorAll('.removeButton');
+
+    removeBtn.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (confirm('Are you sure you want to REMOVE this book') === false) {
+                return;
+            }
+
+            let removeBtnId = e.target.id;
+            let filteredArr = myLibrary.books.filter(book => !removeBtnId.includes(book.id));
+
+            myLibrary.removeBook(filteredArr);
+            createTable();
+        });
+    });
+}
 
 function setUpChangeReadStatusBtn() {
     const changeStatusBtn = document.querySelectorAll('.changeStatusBtn');
