@@ -13,6 +13,14 @@ class Library {
     removeBook(filteredArr) {
         this.books = [...filteredArr];
     }
+
+    changeReadStatus(bookIndex) {
+        if (this.books[bookIndex].readStatus === true) {
+            this.books[bookIndex].readStatus = false;
+        } else {
+            this.books[bookIndex].readStatus = true;
+        }
+    }
 }
 
 const myLibrary = new Library;
@@ -90,6 +98,7 @@ function createTable() {
 
     if (tableBody.textContent !== '') {
         const removeBtn = document.querySelectorAll('.removeButton');
+
         removeBtn.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 if (confirm('Are you sure you want to REMOVE this book') === false) {
@@ -103,5 +112,19 @@ function createTable() {
                 createTable();
             })
         });
+
+        setUpChangeReadStatusBtn();
     }
 };
+
+function setUpChangeReadStatusBtn() {
+    const changeStatusBtn = document.querySelectorAll('.changeStatusBtn');
+    changeStatusBtn.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            let changeStatusBtnId = e.target.id;
+            let bookIndex = myLibrary.books.findIndex((book => changeStatusBtnId.includes(book.id)));
+            myLibrary.changeReadStatus(bookIndex);
+            createTable();
+        });
+    });
+}
