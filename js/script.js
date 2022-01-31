@@ -1,6 +1,11 @@
 const tableBody = document.createElement('tbody');
 const addBookBtn = document.getElementById('addBookBtn');
 
+function init() {
+    setUpAddBookBtn();
+}
+init();
+
 class Library {
     constructor() {
         this.books = [];
@@ -35,23 +40,25 @@ class Book {
     }
 }
 
-addBookBtn.addEventListener('click', () => {
-    let title = document.getElementById('bookTitle').value;
-    let author = document.getElementById('bookAuthor').value;
-    let pages = document.getElementById('bookPages').value;
-    let readStatus = document.getElementById('readStatus').checked;
+function setUpAddBookBtn() {
+    addBookBtn.addEventListener('click', () => {
+        let title = document.getElementById('bookTitle').value;
+        let author = document.getElementById('bookAuthor').value;
+        let pages = document.getElementById('bookPages').value;
+        let readStatus = document.getElementById('readStatus').checked;
 
-    if (title === '' || author === '' || pages === '') {
-        return;
-    }
+        if (title === '' || author === '' || pages === '') {
+            return;
+        }
 
-    let newBook = new Book(title, author, pages, readStatus);
-    myLibrary.addBook(newBook);
+        let newBook = new Book(title, author, pages, readStatus);
+        myLibrary.addBook(newBook);
 
-    document.getElementById('addBookForm').reset();
+        document.getElementById('addBookForm').reset();
 
-    createTable();
-});
+        createTable();
+    });
+}
 
 function createTable() {
     tableBody.textContent = '';
@@ -104,7 +111,6 @@ function createTable() {
 
 function setUpRemoveBtn() {
     const removeBtn = document.querySelectorAll('.removeButton');
-
     removeBtn.forEach(btn => {
         btn.addEventListener('click', (e) => {
             if (confirm('Are you sure you want to REMOVE this book') === false) {
