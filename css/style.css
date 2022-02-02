@@ -1,0 +1,7 @@
+input:required:invalid, input:focus:invalid {
+    border: 1px red dashed;
+}
+
+input:required:valid {
+    border: 1px greenyellow solid;
+}
