@@ -74,12 +74,12 @@ function createTable() {
         let changeStatusBtn = document.createElement('button');
         changeStatusBtn.classList.add('changeStatusBtn');
         changeStatusBtn.id = `ch_${book.id}`;
-        changeStatusBtn.textContent = 'change read status';
+        changeStatusBtn.textContent = 'Change status';
 
         let removeBtn = document.createElement('button');
         removeBtn.classList.add('removeButton');
         removeBtn.id = `del_${book.id}`;
-        removeBtn.textContent = 'Remove Book';
+        removeBtn.textContent = 'Remove';
 
         title.textContent = book.title;
         author.textContent = book.author;
