@@ -18,11 +18,20 @@ main {
     align-items: center;
 }
 
+#form-button {
+    padding-top: 20px;
+}
+
+#form-container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
 fieldset {
     border: 2px solid #6b705c;
     border-radius: 8px;
     padding: 20px;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 #addBookForm {
@@ -73,7 +82,6 @@ table {
 }
 
 table, th, td {
-    /* border: 1px solid black; */
     text-align: center;
   }
 

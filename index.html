@@ -14,8 +14,11 @@
         Book Library
     </header>
     <main>
+        <div id="form-button">
+            <button id="toggleBookForm" onclick="toggleForm()">Add new book</button>
+        </div>
         <div id="form-container">
-            <form id='addBookForm'>
+            <form id='addBookForm' style="display: none;">
                 <fieldset>
                     <legend>Add new Book to the library</legend>
                     <p>
@@ -41,16 +44,6 @@
             </form>
         </div>
         <div id="table-container">
-            <!-- <table id="table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Pages</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-            </table> -->
         </div>
     </main>
     <footer>

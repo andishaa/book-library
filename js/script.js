@@ -53,7 +53,7 @@ function setUpAddBookBtn() {
 
         let newBook = new Book(title, author, pages, readStatus);
         myLibrary.addBook(newBook);
-
+        
         document.getElementById('addBookForm').reset();
 
         createTable();
@@ -63,7 +63,7 @@ function setUpAddBookBtn() {
 function createTable() {
     tableContainer.textContent = '';
 
-    if(myLibrary.books.length === 0) {
+    if (myLibrary.books.length === 0) {
         return;
     }
 
@@ -167,4 +167,17 @@ function setUpChangeReadStatusBtn() {
             createTable();
         });
     });
+}
+
+function toggleForm() {
+    let addBookForm = document.getElementById('addBookForm');
+    let toggleBookForm = document.getElementById('toggleBookForm');
+
+    if (addBookForm.style.display === 'none') {
+        toggleBookForm.textContent = 'Close book form';
+        addBookForm.style.display = 'block';
+    } else {
+        toggleBookForm.textContent = 'Add new book';
+        addBookForm.style.display = 'none';
+    }
 }
