@@ -25,11 +25,6 @@ fieldset {
     margin: 20px;
 }
 
-#form-container {
-    /* display: flex; */
-    /* justify-content: center; */
-}
-
 #addBookForm {
     font-weight: bold;
     /* display: none; */
@@ -81,3 +76,12 @@ table, th, td {
     /* border: 1px solid black; */
     text-align: center;
   }
+
+tr {
+    border-bottom: 1px solid #6b705c;
+    height: 30px;
+}
+
+tbody tr:hover {
+    background-color: #ddbea9;
+}
