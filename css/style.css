@@ -1,15 +1,33 @@
 body {
-    font-family:'Courier New', Courier, monospace
+    font-family:'Courier New', Courier, monospace;
+    margin: 0px;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #6b705c;
+    color: #ffe8d6;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 fieldset {
     border: 2px solid #6b705c;
     border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
 }
 
 #form-container {
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 #addBookForm {
@@ -50,3 +68,16 @@ input:required:invalid, input:focus:invalid {
 input:required:valid {
     border: 1px greenyellow solid;
 }
+
+#table-container {
+    width: 800px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    /* border: 1px solid black; */
+    text-align: center;
+  }
