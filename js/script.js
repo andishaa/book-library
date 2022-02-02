@@ -92,36 +92,40 @@ function createTable() {
 
     myLibrary.books.forEach(book => {
         let row = document.createElement('tr');
-        let title = document.createElement('td');
-        let author = document.createElement('td');
-        let pages = document.createElement('td');
-        let readStatus = document.createElement('td');
+        let tdTitle = document.createElement('td');
+        let tdAuthor = document.createElement('td');
+        let tdPages = document.createElement('td');
+        let tdReadStatus = document.createElement('td');
+        let tdChangeStatusBtn = document.createElement('td');
+        let tdRemoveBtn = document.createElement('td');
 
         let changeStatusBtn = document.createElement('button');
         changeStatusBtn.classList.add('changeStatusBtn');
         changeStatusBtn.id = `ch_${book.id}`;
         changeStatusBtn.textContent = 'Change status';
+        tdChangeStatusBtn.appendChild(changeStatusBtn);
 
         let removeBtn = document.createElement('button');
         removeBtn.classList.add('removeButton');
         removeBtn.id = `del_${book.id}`;
         removeBtn.textContent = 'Remove';
+        tdRemoveBtn.appendChild(removeBtn);
 
-        title.textContent = book.title;
-        author.textContent = book.author;
-        pages.textContent = book.pages;
+        tdTitle.textContent = book.title;
+        tdAuthor.textContent = book.author;
+        tdPages.textContent = book.pages;
         if (book.readStatus) {
-            readStatus.textContent = 'Read';
+            tdReadStatus.textContent = 'Read';
         } else {
-            readStatus.textContent = 'Not read';
+            tdReadStatus.textContent = 'Not read';
         }
 
-        row.appendChild(title);
-        row.appendChild(author);
-        row.appendChild(pages);
-        row.appendChild(readStatus);
-        row.appendChild(changeStatusBtn);
-        row.appendChild(removeBtn);
+        row.appendChild(tdTitle);
+        row.appendChild(tdAuthor);
+        row.appendChild(tdPages);
+        row.appendChild(tdReadStatus);
+        row.appendChild(tdChangeStatusBtn);
+        row.appendChild(tdRemoveBtn);
 
         tbody.appendChild(row);
 
