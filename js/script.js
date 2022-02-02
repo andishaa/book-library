@@ -1,4 +1,4 @@
-const tableBody = document.createElement('tbody');
+const tableContainer = document.getElementById('table-container');
 const addBookBtn = document.getElementById('addBookBtn');
 
 function init() {
@@ -61,8 +61,34 @@ function setUpAddBookBtn() {
 }
 
 function createTable() {
-    tableBody.textContent = '';
-    const table = document.querySelector('table');
+    tableContainer.textContent = '';
+
+    if(myLibrary.books.length === 0) {
+        return;
+    }
+
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const trow = document.createElement('tr');
+    const tbody = document.createElement('tbody');
+
+    const thTitle = document.createElement('th');
+    thTitle.textContent = 'Title';
+    const thAuthor = document.createElement('th');
+    thAuthor.textContent = 'Author';
+    const thPages = document.createElement('th');
+    thPages.textContent = 'Pages';
+    const thStatus = document.createElement('th');
+    thStatus.textContent = 'Status';
+
+    trow.appendChild(thTitle);
+    trow.appendChild(thAuthor);
+    trow.appendChild(thPages);
+    trow.appendChild(thStatus);
+
+    thead.appendChild(trow);
+
+    table.appendChild(thead);
 
     myLibrary.books.forEach(book => {
         let row = document.createElement('tr');
@@ -97,13 +123,14 @@ function createTable() {
         row.appendChild(changeStatusBtn);
         row.appendChild(removeBtn);
 
-        tableBody.appendChild(row)
+        tbody.appendChild(row);
 
     });
 
-    table.appendChild(tableBody);
+    table.appendChild(tbody);
+    tableContainer.appendChild(table);
 
-    if (tableBody.textContent !== '') {
+    if (tbody.textContent !== '') {
         setUpRemoveBtn();
         setUpChangeReadStatusBtn();
     }
