@@ -1,3 +1,48 @@
+body {
+    font-family:'Courier New', Courier, monospace
+}
+
+fieldset {
+    border: 2px solid #6b705c;
+    border-radius: 8px;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+}
+
+#addBookForm {
+    font-weight: bold;
+    /* display: none; */
+}
+
+#addBookForm 
+input[type=text],
+input[type=number] {
+    min-width: 180px;
+    border-radius: 2px;
+}
+
+input[type=text]:focus {
+    outline: none;
+  }
+
+input[type=submit] {
+    text-align: center;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: grey;
+    color: greenyellow;
+    cursor: pointer;
+}
+
+#submission {
+    text-align: center;
+}
+
 input:required:invalid, input:focus:invalid {
     border: 1px red dashed;
 }
