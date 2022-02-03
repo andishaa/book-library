@@ -171,13 +171,13 @@ function setUpChangeReadStatusBtn() {
 
 function toggleForm() {
     let addBookForm = document.getElementById('addBookForm');
-    let toggleBookForm = document.getElementById('toggleBookForm');
+    let toggleBookFormBtn = document.getElementById('toggleBookFormBtn');
 
     if (addBookForm.style.display === 'none') {
-        toggleBookForm.textContent = 'Close book form';
+        toggleBookFormBtn.textContent = 'Close book form';
         addBookForm.style.display = 'block';
     } else {
-        toggleBookForm.textContent = 'Add new book';
+        toggleBookFormBtn.textContent = 'Add new book';
         addBookForm.style.display = 'none';
     }
 }

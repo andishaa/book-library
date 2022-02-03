@@ -22,6 +22,17 @@ main {
     padding-top: 20px;
 }
 
+#toggleBookFormBtn {
+    text-align: center;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: grey;
+    color: greenyellow;
+    cursor: pointer;
+}
+
 #form-container {
     padding-top: 20px;
     padding-bottom: 40px;
@@ -31,12 +42,10 @@ fieldset {
     border: 2px solid #6b705c;
     border-radius: 8px;
     padding: 20px;
-    /* margin: 20px; */
 }
 
 #addBookForm {
     font-weight: bold;
-    /* display: none; */
 }
 
 #addBookForm 
@@ -76,6 +85,7 @@ input:required:valid {
 #table-container {
     width: 800px;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -92,4 +102,15 @@ tr {
 
 tbody tr:hover {
     background-color: #ddbea9;
+}
+
+.changeStatusBtn,
+.removeButton {
+    text-align: center;
+    border: none;
+    padding: 2px 10px;
+    border-radius: 3px;
+    background-color: grey;
+    color: greenyellow;
+    cursor: pointer;
 }
