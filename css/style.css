@@ -125,3 +125,22 @@ button {
 button:hover {
     background-color: #e98e70;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #6b705c;
+    color: #ffe8d6;
+    text-align: center;
+    padding: 15px;
+}
+
+footer p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #d48166;
+}
