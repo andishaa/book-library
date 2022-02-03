@@ -79,6 +79,7 @@ input[type=submit]:hover {
 
 #submission {
     text-align: center;
+    margin-bottom: 0px;
 }
 
 input:required:invalid, input:focus:invalid {
