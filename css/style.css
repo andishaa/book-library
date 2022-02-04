@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 body {
     font-family:'Courier New', Courier, monospace;
     margin: 0px;
@@ -18,6 +22,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px;
 }
 
 #form-button {
@@ -92,6 +97,7 @@ input:required:valid {
 
 #table-container {
     width: 800px;
+    padding: 20px;
 }
 
 table {
@@ -131,13 +137,12 @@ button:hover {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    position: sticky;
+    top: 100vh;
     background-color: #6b705c;
     color: #ffe8d6;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
 }
 
 footer p {
