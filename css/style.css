@@ -60,6 +60,8 @@ input[type=number] {
     min-width: 180px;
     border-radius: 2px;
     color: white;
+    padding: 3px;
+    vertical-align: middle;
 }
 
 input[type=text]:focus,
