@@ -98,7 +98,7 @@ input:required:valid {
 }
 
 #table-container {
-    width: 1000px;
+    max-width: 1000px;
     padding: 20px;
 }
 
