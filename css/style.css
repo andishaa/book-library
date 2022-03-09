@@ -3,18 +3,15 @@
 }
 
 html {
-    height: 100vh;
+    height: 100%;
 } 
-
-body {
-    min-height: 100%;
-}
 
 body {
     font-family:'Courier New', Courier, monospace;
     margin: 0px;
     background-color: #373a36;
     color: white;
+    min-height: 100vh;
 }
 
 header {
