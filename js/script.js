@@ -1,10 +1,3 @@
-const tableContainer = document.getElementById('table-container');
-const addBookBtn = document.getElementById('addBookBtn');
-
-function init() {
-    setUpAddBookBtn();
-}
-init();
 
 class Library {
     constructor() {
@@ -28,8 +21,6 @@ class Library {
     }
 }
 
-const myLibrary = new Library;
-
 class Book {
     constructor(title, author, pages, readStatus) {
         this.id = crypto.randomUUID();
@@ -39,6 +30,10 @@ class Book {
         this.readStatus = readStatus;
     }
 }
+
+const tableContainer = document.getElementById('table-container');
+const addBookBtn = document.getElementById('addBookBtn');
+const myLibrary = new Library;
 
 function setUpAddBookBtn() {
     addBookBtn.addEventListener('click', () => {
@@ -181,3 +176,8 @@ function toggleForm() {
         addBookForm.style.display = 'none';
     }
 }
+
+function init() {
+    setUpAddBookBtn();
+}
+init();
