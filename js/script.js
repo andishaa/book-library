@@ -36,7 +36,8 @@ const addBookBtn = document.getElementById('addBookBtn');
 const myLibrary = new Library;
 
 function setUpAddBookBtn() {
-    addBookBtn.addEventListener('click', () => {
+    addBookBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         let title = document.getElementById('bookTitle').value;
         let author = document.getElementById('bookAuthor').value;
         let pages = document.getElementById('bookPages').value;
