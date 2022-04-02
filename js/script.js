@@ -4,12 +4,12 @@ class Library {
         this.books = [];
     }
 
-    addBook(newBook) {
-        this.books.push(newBook);
+    addBook(book) {
+        this.books.push(book);
     }
 
-    removeBook(filteredArr) {
-        this.books = [...filteredArr];
+    removeBook(bookId) {
+        this.books = this.books.filter(book => book.id !== bookId);
     }
 
     changeReadStatus(bookIndex) {
@@ -144,10 +144,9 @@ function setUpRemoveBtn() {
                 return;
             }
 
-            let removeBtnId = e.target.id;
-            let filteredArr = myLibrary.books.filter(book => !removeBtnId.includes(book.id));
+            let bookId = e.target.id.replace(/^del\_/,'');
+            myLibrary.removeBook(bookId);
 
-            myLibrary.removeBook(filteredArr);
             createTable();
         });
     });
