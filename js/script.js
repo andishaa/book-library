@@ -32,6 +32,8 @@ class Book {
     }
 }
 
+const rowPrefix = 'row_';
+
 const tableContainer = document.getElementById('table-container');
 const addBookBtn = document.getElementById('addBookBtn');
 const myLibrary = new Library;
@@ -109,15 +111,16 @@ function createTable() {
         let tdChangeStatusBtn = document.createElement('td');
         let tdRemoveBtn = document.createElement('td');
 
+        row.id = rowPrefix + book.id;
+        row.classList.add('book-row');
+
         let changeStatusBtn = document.createElement('button');
         changeStatusBtn.classList.add('changeStatusBtn');
-        changeStatusBtn.id = `ch_${book.id}`;
         changeStatusBtn.textContent = 'Change status';
         tdChangeStatusBtn.appendChild(changeStatusBtn);
 
         let removeBtn = document.createElement('button');
         removeBtn.classList.add('removeButton');
-        removeBtn.id = `del_${book.id}`;
         removeBtn.textContent = 'Remove';
         tdRemoveBtn.appendChild(removeBtn);
 
@@ -158,7 +161,7 @@ function setUpRemoveBtn() {
                 return;
             }
 
-            let bookId = e.target.id.replace(/^del\_/,'');
+            const bookId = getParentBookRow(e.target);
             myLibrary.removeBook(bookId);
 
             createTable();
@@ -166,12 +169,17 @@ function setUpRemoveBtn() {
     });
 }
 
+function getParentBookRow(domElement) {
+    return domElement.closest('.book-row').id.replace(/^row\_/,'');
+}
+
 function setUpChangeReadStatusBtn() {
     const changeStatusBtn = document.querySelectorAll('.changeStatusBtn');
     changeStatusBtn.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const bookId = e.target.id.replace(/^ch\_/,'');
+            const bookId = getParentBookRow(e.target);
             myLibrary.changeBookReadStatus(bookId);
+
             createTable();
         });
     });
