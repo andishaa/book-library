@@ -8,16 +8,17 @@ class Library {
         this.books.push(book);
     }
 
+    getBook(bookId){
+        return this.books.filter(book => book.id === bookId)[0];
+    }
+
     removeBook(bookId) {
         this.books = this.books.filter(book => book.id !== bookId);
     }
 
-    changeReadStatus(bookIndex) {
-        if (this.books[bookIndex].readStatus === true) {
-            this.books[bookIndex].readStatus = false;
-        } else {
-            this.books[bookIndex].readStatus = true;
-        }
+    changeBookReadStatus(bookId) {
+        const book = this.getBook(bookId);
+        book.readStatus = !book.readStatus;
     }
 }
 
@@ -156,9 +157,8 @@ function setUpChangeReadStatusBtn() {
     const changeStatusBtn = document.querySelectorAll('.changeStatusBtn');
     changeStatusBtn.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            let changeStatusBtnId = e.target.id;
-            let bookIndex = myLibrary.books.findIndex((book => changeStatusBtnId.includes(book.id)));
-            myLibrary.changeReadStatus(bookIndex);
+            const bookId = e.target.id.replace(/^ch\_/,'');
+            myLibrary.changeBookReadStatus(bookId);
             createTable();
         });
     });
