@@ -127,11 +127,7 @@ function createTable() {
         tdTitle.textContent = book.title;
         tdAuthor.textContent = book.author;
         tdPages.textContent = book.pages;
-        if (book.readStatus) {
-            tdReadStatus.textContent = 'Read';
-        } else {
-            tdReadStatus.textContent = 'Not read';
-        }
+        changeReadStatus(book.id, tdReadStatus);
 
         row.appendChild(tdTitle);
         row.appendChild(tdAuthor);
@@ -153,6 +149,15 @@ function createTable() {
     }
 };
 
+function changeReadStatus(bookId, tdReadStatus) {
+    const book = myLibrary.getBook(bookId);
+    if (book.readStatus) {
+        tdReadStatus.textContent = 'Read';
+    } else {
+        tdReadStatus.textContent = 'Not read';
+    }
+}
+
 function setUpRemoveBtn() {
     const removeBtn = document.querySelectorAll('.removeButton');
     removeBtn.forEach(btn => {
@@ -161,7 +166,7 @@ function setUpRemoveBtn() {
                 return;
             }
 
-            const bookId = getParentBookRow(e.target);
+            const bookId = getBookIdFromClosestParentBookRow(e.target);
             myLibrary.removeBook(bookId);
 
             createTable();
@@ -169,7 +174,7 @@ function setUpRemoveBtn() {
     });
 }
 
-function getParentBookRow(domElement) {
+function getBookIdFromClosestParentBookRow(domElement) {
     return domElement.closest('.book-row').id.replace(/^row\_/,'');
 }
 
@@ -177,10 +182,12 @@ function setUpChangeReadStatusBtn() {
     const changeStatusBtn = document.querySelectorAll('.changeStatusBtn');
     changeStatusBtn.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const bookId = getParentBookRow(e.target);
+            const bookId = getBookIdFromClosestParentBookRow(e.target);
             myLibrary.changeBookReadStatus(bookId);
-
-            createTable();
+            const bookRow = e.target.closest('.book-row');
+            const statusColumnIndex = [...bookRow.closest('table').querySelectorAll('th')].findIndex(th => th.textContent === "Status");
+            const tdReadStatus = bookRow.querySelectorAll('td')[statusColumnIndex];
+            changeReadStatus(bookId,tdReadStatus);
         });
     });
 }
