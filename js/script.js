@@ -36,6 +36,19 @@ const tableContainer = document.getElementById('table-container');
 const addBookBtn = document.getElementById('addBookBtn');
 const myLibrary = new Library;
 
+function toggleForm() {
+    let addBookForm = document.getElementById('addBookForm');
+    let toggleBookFormBtn = document.getElementById('toggleBookFormBtn');
+
+    if (addBookForm.style.display === 'none') {
+        toggleBookFormBtn.textContent = 'Close book form';
+        addBookForm.style.display = 'block';
+    } else {
+        toggleBookFormBtn.textContent = 'Add new book';
+        addBookForm.style.display = 'none';
+    }
+}
+
 function setUpAddBookBtn() {
     addBookBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -162,19 +175,6 @@ function setUpChangeReadStatusBtn() {
             createTable();
         });
     });
-}
-
-function toggleForm() {
-    let addBookForm = document.getElementById('addBookForm');
-    let toggleBookFormBtn = document.getElementById('toggleBookFormBtn');
-
-    if (addBookForm.style.display === 'none') {
-        toggleBookFormBtn.textContent = 'Close book form';
-        addBookForm.style.display = 'block';
-    } else {
-        toggleBookFormBtn.textContent = 'Add new book';
-        addBookForm.style.display = 'none';
-    }
 }
 
 function init() {
